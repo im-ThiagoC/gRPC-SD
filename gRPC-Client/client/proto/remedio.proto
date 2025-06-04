@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package remedio;
+
+option java_multiple_files = true;
+option java_package = "com.example.servidor";
+option java_outer_classname = "RemedioProto";
+
+message DadosCadastroRemedio {
+	int64 id=1;
+  string nome = 2;
+  string via = 3;
+  string lote = 4;
+  int32 quantidade = 5;
+  string validade = 6;   // formato ISO: "yyyy-MM-dd"
+  string laboratorio = 7;
+}
+
+message DadosAtualizarRemedio {
+  int64 id = 1;
+  string nome = 2;
+  string via = 3;
+  string lote = 4;
+  int32 quantidade = 5;
+  string validade = 6;  // formato ISO: "yyyy-MM-dd"
+  string laboratorio = 7;
+}
+
+message DadosDetalhamentoRemedio {
+  int64 id = 1;
+  string nome = 2;
+  string via = 3;
+  string lote = 4;
+  int32 quantidade = 5;
+  string validade = 6;  // formato ISO: "yyyy-MM-dd"
+  string laboratorio = 7;
+  bool ativo = 8;
+}
+
+message DadosListagemRemedio {
+  int64 id = 1;
+  string nome = 2;
+  int32 quantidade = 3;
+}
+
+message IdRequest {
+  int64 id = 1;
+}
+
+message Empty {}
+
+message ListaRemedios {
+  repeated DadosListagemRemedio remedios = 1;
+}
+
+message DadosHistoricoAlteracao {
+  int64 remedioId = 1;
+  string estadoAntigo = 2;
+  string estadoNovo = 3;
+  string tipoAlteracao = 4;
+  string dataAlteracao = 5; // pode ser opcional se registrar timestamp no banco
+}
+
+message ListaHistoricoAlteracoes {
+  repeated DadosHistoricoAlteracao historicos = 1;
+}
+
+message BaixaEstoqueRequest {
+  int64 id = 1;
+  int32 quantidade = 2;
+}
+
+message BaixaEstoqueResponse {
+  DadosDetalhamentoRemedio remedioAtualizado = 1;
+}
+
+service RemedioService {
+  rpc Cadastrar (DadosCadastroRemedio) returns (DadosDetalhamentoRemedio);
+  rpc Listar (Empty) returns (ListaRemedios);
+  rpc Atualizar (DadosAtualizarRemedio) returns (DadosDetalhamentoRemedio);
+  rpc Deletar (IdRequest) returns (Empty);
+  rpc Desativar (IdRequest) returns (Empty);
+  rpc Ativar (IdRequest) returns (Empty);
+  rpc Detalhar (IdRequest) returns (DadosDetalhamentoRemedio);
+  rpc ConsultarHistorico(IdRequest) returns (ListaHistoricoAlteracoes);
+  rpc DarBaixaEstoque(BaixaEstoqueRequest) returns (DadosDetalhamentoRemedio);
+
+}

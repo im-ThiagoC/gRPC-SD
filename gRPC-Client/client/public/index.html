@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Remédios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciamento de Remédios</h1>
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('cadastrar')">Cadastrar</button>
+            <button class="tab-button" onclick="openTab('listar')">Listar</button>
+        </div>
+        
+        <div id="cadastrar" class="tab-content" style="display: block;">
+            <h2>Cadastrar Novo Remédio</h2>
+            <form id="formCadastro">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="via">Via de Administração:</label>
+                    <select id="via" required>
+                        <option value="">Selecione</option>
+                        <option value="ORAL">Oral</option>
+                        <option value="INTRAMUSCULAR">Intramuscular</option>
+                        <option value="VENOSO">Venoso</option>
+                        <option value="NASAL">Nasal</option>
+                        <option value="RETAL">Retal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="lote">Lote:</label>
+                    <input type="text" id="lote" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="validade">Validade:</label>
+                    <input type="date" id="validade" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="laboratorio">Laboratório:</label>
+                    <select id="laboratorio" required>
+                        <option value="">Selecione</option>
+                        <option value="ACHE">Ache</option>
+                        <option value="MEDLEY">Medley</option>
+                    </select>
+                </div>
+
+                <button type="submit">Cadastrar</button>
+            </form>
+            <div id="cadastroResult"></div>
+        </div>
+        
+        <div id="listar" class="tab-content">
+            <h2>Lista de Remédios</h2>
+            <button onclick="carregarRemedios()">Carregar Lista</button>
+            <div id="listaRemedios"></div>
+        </div>
+        
+        <div id="detalhar" class="tab-content">
+            <h2>Detalhes do Remédio</h2>
+            <div class="form-group">
+                <label for="idDetalhe">ID do Remédio:</label>
+                <input type="number" id="idDetalhe">
+                <button onclick="buscarDetalhes()">Buscar</button>
+            </div>
+            <div id="detalhesRemedio"></div>
+        </div>
+
+        <div id="liberar" class="tab-content">
+            
+        </div>
+        
+    </div>
+
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
