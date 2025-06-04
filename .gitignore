@@ -1,24 +1,69 @@
-# Compiled class file
+# Java & Maven
 *.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.nar
 *.ear
+target/
+*.log
+hs_err_pid*
+replay_pid*
+
+# Spring Boot
+*.iml
+.idea/
+.mvn/
+*.env
+*.db
+
+# Maven wrapper files
+mvnw
+mvnw.cmd
+
+# Logs
+*.log
+logs/
+*.out
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Public build outputs
+client/public/dist/
+client/public/build/
+
+# Proto build artifacts
+*.pb.go
+*.pb.cc
+*.pb.h
+*.pb.c
+*.pb.o
+*.pb.ts
+*.pb.js
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-generated
+.DS_Store
+Thumbs.db
+
+# Archive & compress
 *.zip
 *.tar.gz
 *.rar
+*.7z
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Others
+.env
+.env.local
+.env.*.local
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
